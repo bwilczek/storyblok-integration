@@ -1,4 +1,5 @@
-import { storyblokEditable } from "@storyblok/react";
+import { storyblokEditable, renderRichText } from "@storyblok/react";
+import { render } from 'storyblok-rich-text-react-renderer';
 
 const Teaser = ({ blok }) => {
   console.log(blok);
@@ -10,6 +11,12 @@ const Teaser = ({ blok }) => {
       <div>
         {blok.body}
       </div>
+      <hr />
+      Rich text using <code>storyblok-rich-text-react-renderer</code>
+      <div>{render(blok.summary) }</div>
+      Rich text using <code>renderRichText @ @storyblok/react</code>
+      <div dangerouslySetInnerHTML={{ __html: renderRichText(blok.summary) }} />
+      <hr />
     </>
   );
 };
